@@ -38,7 +38,7 @@ class AuthController extends Controller
       
               if(!$user || !Hash::check($request['password'], $user->password)) {
                 return response([
-                    'message' => 'Username & Password does not match'
+                    'message' => 'Username & Password does not match with our record.'
                 ], 401);
         }
     

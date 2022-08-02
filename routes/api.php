@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::post('/login', [AuthController::class, 'login']);
 
-// Route::get('/login', [AuthController::class, 'loginUser']);
+// Homepage routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/job', [HomepageController::class, 'index']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-}); 
-
-Route::apiResource('staff_register', StaffController::class);
-
+});
 

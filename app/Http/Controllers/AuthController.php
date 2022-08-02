@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\StaffRegister;
 use Illuminate\Routing\Controller;
@@ -38,7 +37,7 @@ class AuthController extends Controller
       
               if(!$user || !Hash::check($request['password'], $user->password)) {
                 return response([
-                    'message' => 'Username & Password does not match.'
+                    'message' => 'Username & Password does not match'
                 ], 401);
         }
     
@@ -57,5 +56,13 @@ class AuthController extends Controller
         }
     }
 
+    public function logout(Request $request){
 
+        Auth::user()->tokens()->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Logged out'
+        ], 200);
+    }
 }

@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\StaffController;
 use App\Http\Controllers\HomepageController;
 
 /*
@@ -18,10 +17,11 @@ use App\Http\Controllers\HomepageController;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/job', [HomepageController::class, 'index']);
 
 // Homepage routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/job', [HomepageController::class, 'index']);
+   
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

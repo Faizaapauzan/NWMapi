@@ -84,11 +84,11 @@ class JobRegister extends Model
 	];
 
 	protected $dates = [
-		'today_date',
-		'requested_date',
-		'delivery_date',
-		'jobregistercreated_at',
-		'jobregisterlastmodify_at'
+		'today_date' => 'datetime:d/m/Y',
+		'requested_date' => 'datetime:d/m/Y',
+		'delivery_date' => 'datetime:d/m/Y',
+		'jobregistercreated_at' => 'timestamp',
+		'jobregisterlastmodify_at' => 'timestamp'
 	];
 
 	protected $fillable = [

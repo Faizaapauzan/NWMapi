@@ -15,6 +15,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        return JobRegister::all();
+        $job=JobRegister::all();
+        return response()->json($job);
     }
 }

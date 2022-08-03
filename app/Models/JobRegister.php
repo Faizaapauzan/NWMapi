@@ -7,8 +7,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class JobRegister
@@ -69,6 +72,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class JobRegister extends Model
 {
+	use HasApiTokens, HasFactory, Notifiable;
+	
 	protected $table = 'job_register';
 	protected $primaryKey = 'jobregister_id';
 	public $timestamps = false;

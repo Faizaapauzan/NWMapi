@@ -27,8 +27,13 @@ class HomepageController extends Controller
       $todosatus = JobRegister::select('*')
       ->where('job_assign', '=', auth()->user()->username)
       ->where('job_status', '=', '')
-      ->orwhere('job_status', '=', 'Ready')
       ->where('job_cancel', '=', '')
+        ->orWhere(function ($query) {
+          $query
+            ->where('job_assign', '=', auth()->user()->username)
+            ->where('job_status', '=', 'Ready')
+            ->where('job_cancel', '=', '');
+        })
       ->orderBy('jobregisterlastmodify_at', 'DESC')
       ->limit(50)
       ->get();
@@ -55,7 +60,6 @@ class HomepageController extends Controller
         ], 200); 
     }
     
-
     public function pending()
     {
       $pendingstatus=JobRegister::select('*')
@@ -71,7 +75,6 @@ class HomepageController extends Controller
         ], 200); 
     }
 
-    
     public function completed()
     {
       $completestatus=JobRegister::select('*')
@@ -86,6 +89,7 @@ class HomepageController extends Controller
           'message' => 'Authentication Successful',
         ], 200); 
     }
+
     }
 
 

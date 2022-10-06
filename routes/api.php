@@ -18,11 +18,22 @@ use App\Http\Controllers\HomepageController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job', [HomepageController::class, 'index']);
+Route::get('/will', [HomepageController::class, 'will']);
+
 
 // Homepage routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/todosatus', [HomepageController::class, 'todo']);
+    Route::get('/doingstatus', [HomepageController::class, 'doing']);
+    Route::get('/pendingstatus', [HomepageController::class, 'pending']);
+    Route::get('/incompletestatus', [HomepageController::class, 'incomplete']);
+    Route::get('/username', [HomepageController::class, 'technician']);
+
+
 });
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

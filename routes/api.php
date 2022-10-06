@@ -27,10 +27,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/todosatus', [HomepageController::class, 'todo']);
     Route::get('/doingstatus', [HomepageController::class, 'doing']);
     Route::get('/pendingstatus', [HomepageController::class, 'pending']);
-    Route::get('/incompletestatus', [HomepageController::class, 'incomplete']);
+    Route::get('/completestatus', [HomepageController::class, 'completed']);
     Route::get('/username', [HomepageController::class, 'technician']);
-
-
 });
 
 

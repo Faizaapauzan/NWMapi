@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\AssignJobController;
+use App\Http\Controllers\CompleteController;
+use App\Http\Controllers\IncompleteController;
+use App\Http\Controllers\PendingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +35,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/todoassignedjob', [AssignJobController::class, 'todo']);
     Route::get('/doingassignedjob', [AssignJobController::class, 'doing']);
+
+    Route::get('/pendingjob', [PendingController::class, 'pending']);
+
+    Route::get('/incompletedjob', [IncompleteController::class, 'incomplete']);
+
+    Route::get('/completedjob', [CompleteController::class, 'completed']);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

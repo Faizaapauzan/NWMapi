@@ -36,10 +36,6 @@ class UnassignedController extends Controller
             ->orderBy('jobregisterlastmodify_at', 'DESC')
             ->limit(50)
             ->get();
-                return response()->json([
-                    'status' => true ,
-                    'UnassignedJob' => $UnassignedJob,
-                    'message' => 'Authentication Successful',
-                ], 200); 
+            return response()->json($UnassignedJob);
     }
 }

@@ -32,11 +32,7 @@ class AssignJobController extends Controller
             ->orderBy('jobregisterlastmodify_at', 'DESC')
             ->limit(50)
             ->get();
-                return response()->json([
-                    'status' => true ,
-                    'todoassignedjob' => $todoassignedjob,
-                    'message' => 'Authentication Successful',
-                ], 200); 
+            return response()->json($todoassignedjob);
     }
 
      /**
@@ -63,11 +59,7 @@ class AssignJobController extends Controller
             ->orderBy('jobregisterlastmodify_at', 'DESC')
             ->limit(50)
             ->get();
-                return response()->json([
-                    'status' => true ,
-                    'doingassignedjob' => $doingassignedjob,
-                    'message' => 'Authentication Successful',
-                ], 200); 
+            return response()->json($doingassignedjob);
     }
 
 }

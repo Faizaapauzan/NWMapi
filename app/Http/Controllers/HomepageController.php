@@ -37,11 +37,7 @@ class HomepageController extends Controller
       ->orderBy('jobregisterlastmodify_at', 'DESC')
       ->limit(50)
       ->get();
-        return response()->json([
-          'status' => true ,
-          'todosatus' => $todosatus,
-          'message' => 'Authentication Successful',
-        ], 200); 
+      return response()->json($todosatus);
     }
 
     public function doing()
@@ -53,11 +49,7 @@ class HomepageController extends Controller
             ->orderBy('jobregisterlastmodify_at', 'DESC')
             ->limit(50)
             ->get();
-        return response()->json([
-          'status' => true ,
-          'doingstatus' => $doingstatus,
-          'message' => 'Authentication Successful',
-        ], 200); 
+            return response()->json($doingstatus);
     }
     
     public function pending()
@@ -68,11 +60,7 @@ class HomepageController extends Controller
         ->orderBy('jobregisterlastmodify_at', 'DESC')
         ->limit(50)
         ->get();
-        return response()->json([
-          'status' => true ,
-          'pendingstatus' => $pendingstatus,
-          'message' => 'Authentication Successful',
-        ], 200); 
+        return response()->json($pendingstatus);
     }
 
     public function completed()
@@ -83,11 +71,7 @@ class HomepageController extends Controller
         ->orderBy('jobregisterlastmodify_at', 'DESC')
         ->limit(50)
         ->get();
-        return response()->json([
-          'status' => true ,
-          'completestatus' => $completestatus,
-          'message' => 'Authentication Successful',
-        ], 200); 
+        return response()->json($completestatus);
     }
 
     }

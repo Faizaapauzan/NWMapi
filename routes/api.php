@@ -24,6 +24,10 @@ use App\Http\Controllers\UnassignedController;
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job', [HomepageController::class, 'index']);
 
+Route::get('/completedjob', [CompleteController::class, 'completed']);
+
+Route::get('/incompletedjob', [IncompleteController::class, 'incomplete']);
+
 
 // Homepage routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -41,9 +45,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/pendingjob', [PendingController::class, 'pending']);
 
-    Route::get('/incompletedjob', [IncompleteController::class, 'incomplete']);
+    
 
-    Route::get('/completedjob', [CompleteController::class, 'completed']);
+   
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

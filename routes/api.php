@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/todoassignedjob', [AssignJobController::class, 'todo']);
     Route::get('/doingassignedjob', [AssignJobController::class, 'doing']);
 
-    Route::get('/UnassignedJob', [UnassignedController::class, 'UnassignedJob']);
+    // Route::get('/UnassignedJob', [UnassignedController::class, 'UnassignedJob']);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

@@ -17,11 +17,6 @@ class PendingController extends Controller
             ->orderBy('jobregisterlastmodify_at', 'DESC')
             ->limit(50)
             ->get();
-                return response()->json([
-                    'status' => true ,
-                    'pendingjob' => $pendingjob,
-                    'message' => 'Authentication Successful',
-                ], 200); 
+            return response()->json($pendingjob);
     }
-
 }

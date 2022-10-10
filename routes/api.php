@@ -23,22 +23,28 @@ use App\Http\Controllers\UnassignedController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/job', [HomepageController::class, 'index']);
+Route::get('/completedjob', [CompleteController::class, 'completed']);
+Route::get('/incompletedjob', [IncompleteController::class, 'incomplete']);
 Route::get('/UnassignedJob', [UnassignedController::class, 'UnassignedJob']);
-Route::get('/pendingstatus', [HomepageController::class, 'pending']);
+Route::get('/pendingjob', [PendingController::class, 'pending']);
 
 // Homepage routes
-Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/todosatus', [HomepageController::class, 'todo']);
     Route::get('/doingstatus', [HomepageController::class, 'doing']);
-    // Route::get('/pendingstatus', [HomepageController::class, 'pending']);
+    Route::get('/pendingstatus', [HomepageController::class, 'pending']);
     Route::get('/completestatus', [HomepageController::class, 'completed']);
 
     Route::get('/todoassignedjob', [AssignJobController::class, 'todo']);
     Route::get('/doingassignedjob', [AssignJobController::class, 'doing']);
 
     // Route::get('/UnassignedJob', [UnassignedController::class, 'UnassignedJob']);
+
+    // Route::get('/pendingjob', [PendingController::class, 'pending']);
+
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
